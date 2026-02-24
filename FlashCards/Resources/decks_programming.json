@@ -1,0 +1,534 @@
+{
+  "decks": [
+    {
+      "name": "POO e Design Patterns",
+      "orderIndex": 0,
+      "cards": [
+        {
+          "front": "O que é encapsulamento em POO?",
+          "back": "É o princípio de esconder detalhes internos da implementação e expor apenas o necessário.",
+          "tags": ["POO", "fundamentos"]
+        },
+        {
+          "front": "O polimorfismo permite que objetos de diferentes classes sejam tratados através de uma interface ______.",
+          "back": "comum",
+          "tags": ["POO"]
+        },
+        {
+          "front": "Herança em POO promove reutilização de código. (Verdadeiro ou Falso?)",
+          "back": "Verdadeiro.",
+          "tags": ["POO"]
+        },
+        {
+          "front": "Qual padrão garante que uma classe tenha apenas uma instância?\nA) Factory\nB) Singleton\nC) Observer\nD) Decorator",
+          "back": "B) Singleton",
+          "tags": ["design-patterns"]
+        },
+        {
+          "front": "O que é o princípio SOLID de responsabilidade única?",
+          "back": "Uma classe deve ter apenas um motivo para mudar, ou seja, uma única responsabilidade.",
+          "tags": ["SOLID", "POO"]
+        },
+        {
+          "front": "O padrão Observer notifica _______ quando o estado de um objeto muda.",
+          "back": "dependentes (observers)",
+          "tags": ["design-patterns"]
+        },
+        {
+          "front": "Dependency Injection sempre torna o código mais acoplado. (Verdadeiro ou Falso?)",
+          "back": "Falso. Ela reduz o acoplamento ao injetar dependências externamente.",
+          "tags": ["design-patterns"]
+        },
+        {
+          "front": "Qual padrão cria objetos sem expor a lógica de criação?\nA) Singleton\nB) Factory\nC) Strategy\nD) Adapter",
+          "back": "B) Factory",
+          "tags": ["design-patterns"]
+        },
+        {
+          "front": "O que é abstração em programação orientada a objetos?",
+          "back": "É simplificar a realidade focando apenas nos aspectos relevantes e escondendo os detalhes.",
+          "tags": ["POO"]
+        },
+        {
+          "front": "O princípio Open/Closed diz que classes devem estar _______ para extensão e _______ para modificação.",
+          "back": "abertas / fechadas",
+          "tags": ["SOLID"]
+        },
+        {
+          "front": "Strategy e State são padrões comportamentais. (Verdadeiro ou Falso?)",
+          "back": "Verdadeiro.",
+          "tags": ["design-patterns"]
+        },
+        {
+          "front": "Qual padrão adapta uma interface a outra que o cliente espera?\nA) Facade\nB) Adapter\nC) Proxy\nD) Bridge",
+          "back": "B) Adapter",
+          "tags": ["design-patterns"]
+        },
+        {
+          "front": "O que é composição em relação a herança?",
+          "back": "Composição é quando um objeto contém outros objetos; prefere-se a composição à herança quando possível.",
+          "tags": ["POO"]
+        },
+        {
+          "front": "O princípio de inversão de dependência diz que módulos de alto nível não devem depender de módulos de ______ nível.",
+          "back": "baixo",
+          "tags": ["SOLID"]
+        },
+        {
+          "front": "Template Method define o esqueleto de um algoritmo na classe base. (Verdadeiro ou Falso?)",
+          "back": "Verdadeiro.",
+          "tags": ["design-patterns"]
+        },
+        {
+          "front": "Qual padrão estrutura objetos em árvore para representar hierarquias?\nA) Composite\nB) Flyweight\nC) Builder\nD) Prototype",
+          "back": "A) Composite",
+          "tags": ["design-patterns"]
+        },
+        {
+          "front": "O que é o padrão Decorator?",
+          "back": "Adiciona responsabilidades a um objeto dinamicamente, envolvendo-o sem alterar sua interface.",
+          "tags": ["design-patterns"]
+        },
+        {
+          "front": "Injeção de dependência pode ser feita por construtor, setter ou ______.",
+          "back": "interface",
+          "tags": ["design-patterns"]
+        },
+        {
+          "front": "MVC e MVVM são padrões arquiteturais. (Verdadeiro ou Falso?)",
+          "back": "Verdadeiro.",
+          "tags": ["arquitetura"]
+        },
+        {
+          "front": "Qual princípio SOLID está relacionado a interfaces específicas em vez de uma geral?\nA) SRP\nB) OCP\nC) LSP\nD) ISP",
+          "back": "D) ISP (Interface Segregation Principle)",
+          "tags": ["SOLID"]
+        }
+      ]
+    },
+    {
+      "name": "Estruturas de Dados",
+      "orderIndex": 1,
+      "cards": [
+        {
+          "front": "Qual a complexidade de busca em um array ordenado com busca binária?",
+          "back": "O(log n).",
+          "tags": ["complexidade", "array"]
+        },
+        {
+          "front": "Uma pilha (stack) segue o princípio _______ a entrar, _______ a sair.",
+          "back": "último / primeiro (LIFO)",
+          "tags": ["pilha", "estruturas"]
+        },
+        {
+          "front": "Filas (queues) são estruturas FIFO. (Verdadeiro ou Falso?)",
+          "back": "Verdadeiro. First In, First Out.",
+          "tags": ["fila"]
+        },
+        {
+          "front": "Em qual estrutura a inserção no início é O(1)?\nA) Array\nB) Lista ligada simples\nC) Array dinâmico\nD) Pilha",
+          "back": "B) Lista ligada simples",
+          "tags": ["lista-ligada"]
+        },
+        {
+          "front": "O que é um hash table?",
+          "back": "Estrutura que mapeia chaves a valores usando uma função hash para indexação rápida (média O(1)).",
+          "tags": ["hash", "estruturas"]
+        },
+        {
+          "front": "Em uma árvore binária de busca, o filho à esquerda tem valor _______ que o nó pai.",
+          "back": "menor",
+          "tags": ["árvore", "BST"]
+        },
+        {
+          "front": "Heap é sempre uma árvore binária de busca. (Verdadeiro ou Falso?)",
+          "back": "Falso. Heap mantém propriedade de heap (max ou min), não ordem de BST.",
+          "tags": ["heap"]
+        },
+        {
+          "front": "Qual estrutura é usada para implementar filas de prioridade?\nA) Array\nB) Lista ligada\nC) Heap\nD) Árvore AVL",
+          "back": "C) Heap",
+          "tags": ["heap", "fila-prioridade"]
+        },
+        {
+          "front": "O que é a complexidade de inserção no pior caso em uma árvore binária de busca não balanceada?",
+          "back": "O(n), quando a árvore degenera em lista.",
+          "tags": ["BST", "complexidade"]
+        },
+        {
+          "front": "BFS em um grafo usa a estrutura de dados _______.",
+          "back": "fila (queue)",
+          "tags": ["grafo", "BFS"]
+        },
+        {
+          "front": "DFS pode ser implementado com recursão ou pilha. (Verdadeiro ou Falso?)",
+          "back": "Verdadeiro.",
+          "tags": ["DFS", "grafo"]
+        },
+        {
+          "front": "Qual estrutura é ideal para undo/redo?\nA) Fila\nB) Duas pilhas\nC) Hash\nD) Árvore",
+          "back": "B) Duas pilhas",
+          "tags": ["pilha"]
+        },
+        {
+          "front": "O que é um grafo direcionado?",
+          "back": "Grafo em que as arestas têm direção (de um vértice a outro).",
+          "tags": ["grafo"]
+        },
+        {
+          "front": "Em uma árvore AVL, a diferença de altura entre subárvores esquerda e direita é no máximo _______.",
+          "back": "1",
+          "tags": ["AVL", "árvore"]
+        },
+        {
+          "front": "Lista encadeada permite acesso aleatório em O(1). (Verdadeiro ou Falso?)",
+          "back": "Falso. Acesso por índice é O(n) na lista ligada.",
+          "tags": ["lista-ligada"]
+        },
+        {
+          "front": "Qual algoritmo de ordenação tem O(n log n) no pior caso?\nA) QuickSort\nB) MergeSort\nC) BubbleSort\nD) InsertionSort",
+          "back": "B) MergeSort",
+          "tags": ["ordenação", "complexidade"]
+        },
+        {
+          "front": "O que é uma tabela hash com encadeamento?",
+          "back": "Resolução de colisões em que cada bucket mantém uma lista de elementos com o mesmo hash.",
+          "tags": ["hash"]
+        },
+        {
+          "front": "Árvore rubro-negra garante altura _______ em relação ao número de nós.",
+          "back": "logarítmica (O(log n))",
+          "tags": ["árvore", "balanceamento"]
+        },
+        {
+          "front": "QuickSort é estável. (Verdadeiro ou Falso?)",
+          "back": "Falso. A implementação clássica in-place não é estável.",
+          "tags": ["ordenação"]
+        },
+        {
+          "front": "Qual estrutura usa LIFO?\nA) Fila\nB) Pilha\nC) Deque\nD) Árvore",
+          "back": "B) Pilha",
+          "tags": ["pilha"]
+        }
+      ]
+    },
+    {
+      "name": "Arquitetura e Clean Code",
+      "orderIndex": 2,
+      "cards": [
+        {
+          "front": "O que é o padrão MVC?",
+          "back": "Model-View-Controller: separa dados (Model), apresentação (View) e lógica de controle (Controller).",
+          "tags": ["MVC", "arquitetura"]
+        },
+        {
+          "front": "No MVVM, a View se comunica com o Model através do _______.",
+          "back": "ViewModel",
+          "tags": ["MVVM"]
+        },
+        {
+          "front": "Clean Code defende nomes longos e descritivos. (Verdadeiro ou Falso?)",
+          "back": "Verdadeiro. Nomes devem revelar intenção.",
+          "tags": ["clean-code"]
+        },
+        {
+          "front": "Qual camada é responsável por regras de negócio?\nA) View\nB) Controller\nC) Model\nD) ViewModel",
+          "back": "C) Model (ou Domain)",
+          "tags": ["arquitetura"]
+        },
+        {
+          "front": "O que é acoplamento e por que devemos reduzi-lo?",
+          "back": "Acoplamento é a dependência entre módulos. Reduzir facilita mudanças e testes.",
+          "tags": ["clean-code"]
+        },
+        {
+          "front": "Funções devem fazer uma coisa só e fazer _______.",
+          "back": "bem",
+          "tags": ["clean-code"]
+        },
+        {
+          "front": "Comentários explicativos são preferíveis a código autoexplicativo. (Verdadeiro ou Falso?)",
+          "back": "Falso. Código claro é preferível; comentários quando necessário.",
+          "tags": ["clean-code"]
+        },
+        {
+          "front": "Qual padrão arquitetural é mais usado no iOS moderno?\nA) MVC\nB) MVVM\nC) VIPER\nD) Redux",
+          "back": "B) MVVM (mais comum em projetos atuais)",
+          "tags": ["MVVM", "iOS"]
+        },
+        {
+          "front": "O que é injeção de dependência?",
+          "back": "Fornecer dependências a um objeto externamente, em vez de ele criá-las, reduzindo acoplamento.",
+          "tags": ["arquitetura"]
+        },
+        {
+          "front": "Repository pattern abstrai o _______ de dados.",
+          "back": "acesso (persistência)",
+          "tags": ["repository", "arquitetura"]
+        },
+        {
+          "front": "VIPER divide a aplicação em View, Interactor, Presenter, Entity e Router. (Verdadeiro ou Falso?)",
+          "back": "Verdadeiro.",
+          "tags": ["VIPER"]
+        },
+        {
+          "front": "O que é um código “smell”?\nA) Código com bug\nB) Indício de problema de design\nC) Código comentado\nD) Código lento",
+          "back": "B) Indício de problema de design",
+          "tags": ["refactoring"]
+        },
+        {
+          "front": "Por que evitar funções com muitos parâmetros?",
+          "back": "Dificulta leitura e manutenção; considere agrupar em objeto ou revisar responsabilidade.",
+          "tags": ["clean-code"]
+        },
+        {
+          "front": "Testes unitários devem ser rápidos, independentes e _______.",
+          "back": "repetíveis",
+          "tags": ["testes"]
+        },
+        {
+          "front": "Duplicação de código é aceitável se economizar tempo. (Verdadeiro ou Falso?)",
+          "back": "Falso. DRY: Don't Repeat Yourself.",
+          "tags": ["clean-code"]
+        },
+        {
+          "front": "Qual princípio diz que você deve poder substituir subtipos por seus tipos base?\nA) SRP\nB) OCP\nC) LSP\nD) ISP",
+          "back": "C) LSP (Liskov Substitution Principle)",
+          "tags": ["SOLID"]
+        },
+        {
+          "front": "O que é separação de responsabilidades?",
+          "back": "Cada módulo ou classe com uma responsabilidade bem definida, facilitando mudanças e testes.",
+          "tags": ["arquitetura"]
+        },
+        {
+          "front": "Nomenclatura de variáveis booleanas deve sugerir _______, por exemplo isActive ou hasPermission.",
+          "back": "sim/não (verdadeiro/falso)",
+          "tags": ["nomenclatura"]
+        },
+        {
+          "front": "Código legível é mais importante que código performático na maioria dos casos. (Verdadeiro ou Falso?)",
+          "back": "Verdadeiro. Otimize só depois de medir.",
+          "tags": ["clean-code"]
+        },
+        {
+          "front": "Em qual camada ficam as chamadas de API?\nA) View\nB) ViewModel\nC) Repository/Service\nD) Model",
+          "back": "C) Repository/Service",
+          "tags": ["arquitetura"]
+        }
+      ]
+    },
+    {
+      "name": "Linguagens e Paradigmas",
+      "orderIndex": 3,
+      "cards": [
+        {
+          "front": "O que é programação funcional?",
+          "back": "Paradigma que trata funções como cidadãs de primeira classe, evita efeitos colaterais e valoriza imutabilidade.",
+          "tags": ["paradigmas", "funcional"]
+        },
+        {
+          "front": "Em Swift, optionals representam a presença ou _______ de um valor.",
+          "back": "ausência",
+          "tags": ["Swift"]
+        },
+        {
+          "front": "JavaScript é uma linguagem tipada estaticamente. (Verdadeiro ou Falso?)",
+          "back": "Falso. JavaScript é tipada dinamicamente.",
+          "tags": ["JavaScript"]
+        },
+        {
+          "front": "Qual palavra-chave em Swift indica referência forte?\nA) weak\nB) strong\nC) (implícito)\nD) retain",
+          "back": "C) Por padrão as referências são fortes (strong).",
+          "tags": ["Swift", "memória"]
+        },
+        {
+          "front": "O que é closure em programação?",
+          "back": "Função que pode capturar variáveis do escopo onde foi definida (closure sobre o ambiente).",
+          "tags": ["closure", "funcional"]
+        },
+        {
+          "front": "Python usa _______ para delimitação de blocos em vez de chaves.",
+          "back": "indentação",
+          "tags": ["Python"]
+        },
+        {
+          "front": "Em linguagens funcionais puras, não há side effects. (Verdadeiro ou Falso?)",
+          "back": "Verdadeiro.",
+          "tags": ["funcional"]
+        },
+        {
+          "front": "Qual linguagem é compilada para bytecode e roda na JVM?\nA) C#\nB) Kotlin\nC) Java\nD) Swift",
+          "back": "C) Java (Kotlin também, mas Java é a resposta mais direta)",
+          "tags": ["Java"]
+        },
+        {
+          "front": "O que é tipagem estática?",
+          "back": "Tipos verificados em tempo de compilação; variáveis têm tipo fixo declarado.",
+          "tags": ["tipos"]
+        },
+        {
+          "front": "Em Swift, structs são _______ por valor e classes por _______.",
+          "back": "copiadas / referência",
+          "tags": ["Swift"]
+        },
+        {
+          "front": "Tail recursion pode ser otimizada pelo compilador para evitar estouro de pilha. (Verdadeiro ou Falso?)",
+          "back": "Verdadeiro (em muitas linguagens funcionais e em Swift com otimizações).",
+          "tags": ["recursão", "funcional"]
+        },
+        {
+          "front": "Qual paradigma enfatiza objetos e mensagens?\nA) Funcional\nB) Orientado a objetos\nC) Procedural\nD) Lógico",
+          "back": "B) Orientado a objetos",
+          "tags": ["paradigmas"]
+        },
+        {
+          "front": "O que é garbage collection?",
+          "back": "Recuperação automática de memória não mais referenciada pelo programa.",
+          "tags": ["memória"]
+        },
+        {
+          "front": "O protocolo usado para comunicação segura na web é o _______.",
+          "back": "HTTPS",
+          "tags": ["redes", "web"]
+        },
+        {
+          "front": "Swift usa garbage collector para gerenciar memória. (Verdadeiro ou Falso?)",
+          "back": "Falso. Swift usa ARC (Automatic Reference Counting).",
+          "tags": ["Swift", "ARC"]
+        },
+        {
+          "front": "Qual linguagem é conhecida por “batteries included”?\nA) C\nB) Python\nC) Ruby\nD) Go",
+          "back": "B) Python",
+          "tags": ["Python"]
+        },
+        {
+          "front": "O que é imutabilidade?",
+          "back": "Dados que não mudam após criação; alterações criam novos valores em vez de modificar os existentes.",
+          "tags": ["funcional"]
+        },
+        {
+          "front": "Em programação reativa, fluxos de dados são representados como _______.",
+          "back": "streams / observables",
+          "tags": ["reativo"]
+        },
+        {
+          "front": "TypeScript adiciona tipagem estática ao JavaScript. (Verdadeiro ou Falso?)",
+          "back": "Verdadeiro.",
+          "tags": ["TypeScript"]
+        },
+        {
+          "front": "Qual linguagem é predominantemente usada no backend com Node?\nA) Python\nB) JavaScript\nC) Ruby\nD) PHP",
+          "back": "B) JavaScript (Node.js)",
+          "tags": ["JavaScript", "Node"]
+        }
+      ]
+    },
+    {
+      "name": "Redes, Segurança e Web",
+      "orderIndex": 4,
+      "cards": [
+        {
+          "front": "O que é HTTP?",
+          "back": "HyperText Transfer Protocol: protocolo de aplicação para requisição e resposta na web.",
+          "tags": ["HTTP", "redes"]
+        },
+        {
+          "front": "HTTPS adiciona _______ ao HTTP, geralmente via TLS/SSL.",
+          "back": "criptografia (segurança)",
+          "tags": ["HTTPS", "segurança"]
+        },
+        {
+          "front": "REST é um protocolo específico como HTTP. (Verdadeiro ou Falso?)",
+          "back": "Falso. REST é um estilo arquitetural que usa HTTP.",
+          "tags": ["REST"]
+        },
+        {
+          "front": "Qual método HTTP é usado para criar recurso no servidor?\nA) GET\nB) POST\nC) PUT\nD) DELETE",
+          "back": "B) POST (ou PUT para criação com ID conhecido)",
+          "tags": ["HTTP", "REST"]
+        },
+        {
+          "front": "O que é CORS?",
+          "back": "Cross-Origin Resource Sharing: mecanismo que permite ou restringe requisições de origens diferentes no navegador.",
+          "tags": ["web", "segurança"]
+        },
+        {
+          "front": "O status HTTP 200 indica _______ na requisição.",
+          "back": "sucesso",
+          "tags": ["HTTP"]
+        },
+        {
+          "front": "Tokens JWT são sempre criptografados. (Verdadeiro ou Falso?)",
+          "back": "Falso. JWT é assinado (signed); payload pode ser base64 sem criptografia.",
+          "tags": ["JWT", "segurança"]
+        },
+        {
+          "front": "Qual status HTTP indica erro do cliente?\nA) 500\nB) 404\nC) 200\nD) 302",
+          "back": "B) 404 (4xx são erros do cliente)",
+          "tags": ["HTTP"]
+        },
+        {
+          "front": "O que é autenticação?",
+          "back": "Processo de verificar a identidade de um usuário (quem você é).",
+          "tags": ["segurança"]
+        },
+        {
+          "front": "Autorização define o que um usuário _______ fazer após autenticado.",
+          "back": "pode",
+          "tags": ["segurança"]
+        },
+        {
+          "front": "HTTPS usa a porta 443 por padrão. (Verdadeiro ou Falso?)",
+          "back": "Verdadeiro.",
+          "tags": ["HTTPS"]
+        },
+        {
+          "front": "Qual padrão é usado para autenticação com token em APIs?\nA) Basic Auth\nB) OAuth 2.0 / Bearer\nC) Cookie only\nD) Nenhum",
+          "back": "B) OAuth 2.0 / Bearer token",
+          "tags": ["OAuth", "API"]
+        },
+        {
+          "front": "O que é SQL Injection?",
+          "back": "Ataque em que entrada maliciosa é inserida em consultas SQL, podendo alterar ou expor dados.",
+          "tags": ["segurança"]
+        },
+        {
+          "front": "XSS significa Cross-_______ Scripting.",
+          "back": "Site",
+          "tags": ["segurança", "web"]
+        },
+        {
+          "front": "GET deve ser usado para operações que alteram estado no servidor. (Verdadeiro ou Falso?)",
+          "back": "Falso. GET deve ser idempotente e seguro; use POST/PUT/DELETE para alterações.",
+          "tags": ["HTTP", "REST"]
+        },
+        {
+          "front": "Qual cabeçalho HTTP indica o tipo de conteúdo do corpo?\nA) Authorization\nB) Content-Type\nC) Accept\nD) Cache-Control",
+          "back": "B) Content-Type",
+          "tags": ["HTTP"]
+        },
+        {
+          "front": "O que é rate limiting?",
+          "back": "Limitar a quantidade de requisições por tempo para evitar abuso e garantir disponibilidade.",
+          "tags": ["API", "segurança"]
+        },
+        {
+          "front": "WebSockets permitem comunicação _______ em tempo real.",
+          "back": "bidirecional",
+          "tags": ["WebSocket", "redes"]
+        },
+        {
+          "front": "API RESTful deve ser stateless. (Verdadeiro ou Falso?)",
+          "back": "Verdadeiro. Cada requisição deve conter informação suficiente; servidor não guarda estado da sessão.",
+          "tags": ["REST"]
+        },
+        {
+          "front": "Qual método HTTP é idempotente e usado para atualizar recurso?\nA) POST\nB) PATCH\nC) PUT\nD) GET",
+          "back": "C) PUT (idempotente; PATCH pode ser usado para atualização parcial)",
+          "tags": ["HTTP"]
+        }
+      ]
+    }
+  ]
+}

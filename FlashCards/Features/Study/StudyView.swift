@@ -47,7 +47,7 @@ struct StudyView: View {
                             ttsService.stop()
                             ttsService.speak(isFlipped ? card.back : card.front)
                         } label: {
-                            Label("Ouvir", systemImage: "speaker.wave.2")
+                            Label(L10n.listen, systemImage: "speaker.wave.2")
                         }
                         .buttonStyle(.bordered)
                     }
@@ -66,7 +66,7 @@ struct StudyView: View {
         }
         .toolbar {
             ToolbarItem(placement: .cancellationAction) {
-                Button("Fechar") {
+                Button(L10n.close) {
                     endSession()
                     dismiss()
                 }
@@ -138,7 +138,7 @@ struct StudyView: View {
                 VStack(spacing: AppSpacing.xxs) {
                     Image(systemName: "xmark")
                         .font(.title2)
-                    Text("Errei")
+                    Text(L10n.wrong)
                         .font(AppTypography.caption)
                 }
                 .frame(maxWidth: .infinity)
@@ -154,7 +154,7 @@ struct StudyView: View {
                 VStack(spacing: AppSpacing.xxs) {
                     Image(systemName: "questionmark")
                         .font(.title2)
-                    Text("Difícil")
+                    Text(L10n.hard)
                         .font(AppTypography.caption)
                 }
                 .frame(maxWidth: .infinity)
@@ -170,7 +170,7 @@ struct StudyView: View {
                 VStack(spacing: AppSpacing.xxs) {
                     Image(systemName: "checkmark")
                         .font(.title2)
-                    Text("Acertei")
+                    Text(L10n.correct)
                         .font(AppTypography.caption)
                 }
                 .frame(maxWidth: .infinity)
@@ -216,10 +216,10 @@ struct StudyView: View {
     private var emptyOrLoading: some View {
         VStack {
             if queue.isEmpty {
-                Text("Nenhum card para revisar agora.")
+                Text(L10n.noCardsToReview)
                     .font(AppTypography.body)
                     .foregroundStyle(.secondary)
-                Button("Fechar") {
+                Button(L10n.close) {
                     dismiss()
                 }
                 .padding()
@@ -239,22 +239,23 @@ struct StudyView: View {
                 ConfettiView()
                     .frame(height: 80)
             }
-            Text("Sessão concluída")
+            Text(L10n.sessionComplete)
                 .font(AppTypography.title)
             VStack(spacing: AppSpacing.sm) {
                 HStack {
                     Image(systemName: "checkmark.circle.fill")
                         .foregroundStyle(Color("SuccessColor"))
-                    Text("\(correctCount) acertos")
+                    Text(L10n.correctCountFormatted(correctCount))
                 }
                 HStack {
                     Image(systemName: "xmark.circle.fill")
                         .foregroundStyle(Color("ErrorColor"))
-                    Text("\(incorrectCount) erros")
+                    Text(L10n.incorrectCountFormatted(incorrectCount))
                 }
             }
             .font(AppTypography.title3)
-            PrimaryButton("Fechar", style: .primary) {
+            PrimaryButton(L10n.close, style: .primary) {
+                moveCurrentDeckToEnd()
                 dismiss()
             }
             .padding(.horizontal, AppSpacing.xxl)
@@ -282,6 +283,18 @@ struct StudyView: View {
         session?.endedAt = Date()
         try? modelContext.save()
         updateWidgetData()
+    }
+
+    private func moveCurrentDeckToEnd() {
+        let descriptor = FetchDescriptor<Deck>(sortBy: [SortDescriptor(\.orderIndex)])
+        guard var all = try? modelContext.fetch(descriptor),
+              let idx = all.firstIndex(where: { $0.id == deck.id }) else { return }
+        let d = all.remove(at: idx)
+        all.append(d)
+        for (i, deck) in all.enumerated() {
+            deck.orderIndex = i
+        }
+        try? modelContext.save()
     }
 
     private func updateWidgetData() {

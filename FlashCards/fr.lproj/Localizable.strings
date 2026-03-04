@@ -1,0 +1,106 @@
+/* General */
+"decks" = "Paquets";
+"deck" = "Paquet";
+"cancel" = "Annuler";
+"save" = "Enregistrer";
+"create" = "Créer";
+"edit" = "Modifier";
+"close" = "Fermer";
+"done" = "Terminé";
+
+/* Decks list */
+"no_decks_yet" = "Aucun paquet pour l'instant";
+"tap_plus_to_create_first" = "Appuyez sur + pour créer votre premier paquet.";
+"new_deck" = "Nouveau paquet";
+"deck_name_placeholder" = "Nom du paquet";
+"cards_count_dominance" = "%d cartes • %d%% maîtrisé";
+
+/* Generate cards (AI) */
+"generate_cards_with_ai" = "Générer des cartes avec l'IA";
+"generate_cards_prompt_placeholder" = "Ex. C#, allocation mémoire, COBOL, Design Thinking, boutons Android";
+"generate_cards_prompt_footer" = "Saisissez le thème : n'importe quel langage (C#, COBOL, etc.), sujets spécifiques (ex. mémoire), design (web, Android, Design Thinking, boutons) ou gestion informatique.";
+"cards_quantity" = "Nombre de cartes";
+"generate" = "Générer";
+"ai_unavailable_device" = "Apple Intelligence n'est pas disponible sur cet appareil.";
+"ai_unavailable_not_enabled" = "Activez Apple Intelligence dans Réglages pour générer des cartes.";
+"ai_unavailable_model_not_ready" = "Le modèle est en cours de préparation. Réessayez dans un instant.";
+"ai_unavailable_other" = "Apple Intelligence n'est pas disponible pour le moment.";
+"error_try_fewer_cards" = "Essayez moins de cartes ou un message plus court.";
+"error_could_not_generate" = "Impossible de générer les cartes. Réessayez.";
+
+/* Deck detail */
+"study" = "Étudier";
+"no_cards_in_deck" = "Aucune carte dans ce paquet";
+"tap_plus_to_add_cards" = "Appuyez sur + pour ajouter des cartes.";
+"edit_deck" = "Modifier le paquet";
+
+/* Card add/edit */
+"edit_card" = "Modifier la carte";
+"new_card" = "Nouvelle carte";
+"front_question" = "Recto (question)";
+"back_answer" = "Verso (réponse)";
+"question_placeholder" = "Question";
+"answer_placeholder" = "Réponse";
+"tags" = "Tags";
+"add_tag" = "Ajouter";
+"difficulty" = "Difficulté";
+"important" = "Important";
+
+/* Difficulty */
+"difficulty_leve" = "Facile";
+"difficulty_media" = "Moyen";
+"difficulty_dificil" = "Difficile";
+
+/* Card detail */
+"card" = "Carte";
+"front" = "Recto";
+"back" = "Verso";
+"statistics" = "Statistiques";
+"success_rate" = "%d%% de réussite";
+
+/* Study */
+"listen" = "Écouter";
+"no_cards_to_review" = "Aucune carte à réviser pour le moment.";
+"session_complete" = "Session terminée";
+"correct_count" = "%d corrects";
+"incorrect_count" = "%d incorrects";
+"move_deck_to_end" = "Déplacer le paquet à la fin de la liste";
+"wrong" = "Faux";
+"hard" = "Difficile";
+"correct" = "Correct";
+
+/* Settings */
+"settings" = "Réglages";
+"account" = "Compte";
+"sign_out" = "Se déconnecter";
+"study_section" = "Étude";
+"review_notifications" = "Notifications de révision";
+"tts" = "Synthèse vocale (TTS)";
+"data" = "Données";
+"export_decks_json" = "Exporter les paquets (JSON)";
+"import_decks_json" = "Importer les paquets (JSON)";
+"import_success" = "Importation terminée.";
+"import_error_file" = "Impossible d'ouvrir le fichier.";
+"import_error_access" = "Accès au fichier refusé.";
+"import_error_generic" = "Échec de l'importation : %@";
+"language" = "Langue";
+"language_system" = "Système";
+
+/* Login */
+"app_name" = "Smart Flashcards";
+"app_tagline" = "Étude intelligente hors ligne";
+"continue_without_login" = "Continuer sans connexion";
+"data_stays_on_device" = "Vos données restent uniquement sur votre appareil.";
+
+/* Statistics */
+"statistics_title" = "Statistiques";
+"overview" = "Aperçu";
+"weekly_progress" = "Progression hebdomadaire";
+"by_deck" = "Par paquet";
+"stat_correct" = "Corrects";
+"stat_streak" = "Série";
+"stat_streak_days" = "jours";
+"stat_studied" = "Étudiés";
+
+/* AI error */
+"ai_error_out_of_scope" = "Impossible de générer les cartes. L'app prend en charge tout langage de programmation, le design (web, Android, Design Thinking, etc.) et la gestion informatique.";

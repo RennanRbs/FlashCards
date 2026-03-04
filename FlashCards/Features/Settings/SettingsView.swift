@@ -23,21 +23,39 @@ struct SettingsView: View {
     @State private var exportData: Data?
     @State private var importError: String?
     @State private var importSuccess = false
+    @State private var selectedLanguage: AppLanguage?
     @Query(sort: \Deck.orderIndex) private var decks: [Deck]
 
-    init() {}
+    init() {
+        _selectedLanguage = State(initialValue: AppLanguageManager.storedAppLanguage)
+    }
 
     var body: some View {
         NavigationStack {
             Form {
-                Section("Conta") {
-                    Button("Sair da conta", role: .destructive) {
+                Section(L10n.language) {
+                    Picker(L10n.language, selection: $selectedLanguage) {
+                        Text(L10n.languageSystem).tag(Optional<AppLanguage>.none)
+                        ForEach(AppLanguage.allCases) { lang in
+                            Text(lang.displayName).tag(Optional<AppLanguage>.some(lang))
+                        }
+                    }
+                    .onChange(of: selectedLanguage) { _, new in
+                        if let lang = new {
+                            AppLanguageManager.shared.setLanguage(lang)
+                        } else {
+                            AppLanguageManager.shared.useSystemLanguage()
+                        }
+                    }
+                }
+                Section(L10n.account) {
+                    Button(L10n.signOut, role: .destructive) {
                         authService.signOut()
                         dismiss()
                     }
                 }
-                Section("Estudo") {
-                    Toggle("Notificações de revisão", isOn: $notificationsEnabled)
+                Section(L10n.studySection) {
+                    Toggle(L10n.reviewNotifications, isOn: $notificationsEnabled)
                         .onChange(of: notificationsEnabled) { _, enabled in
                             if enabled {
                                 Task {
@@ -52,14 +70,14 @@ struct SettingsView: View {
                                 NotificationService.cancelDailyReminder()
                             }
                         }
-                    Toggle("Text-to-Speech (TTS)", isOn: $ttsEnabled)
+                    Toggle(L10n.tts, isOn: $ttsEnabled)
                 }
-                Section("Dados") {
-                    Button("Exportar decks (JSON)") {
+                Section(L10n.data) {
+                    Button(L10n.exportDecksJSON) {
                         exportDecks()
                     }
                     .disabled(decks.isEmpty)
-                    Button("Importar decks (JSON)") {
+                    Button(L10n.importDecksJSON) {
                         showingImportPicker = true
                     }
                 }
@@ -71,16 +89,16 @@ struct SettingsView: View {
                 }
                 if importSuccess {
                     Section {
-                        Text("Importação concluída.")
+                        Text(L10n.importSuccess)
                             .foregroundStyle(Color("SuccessColor"))
                     }
                 }
             }
-            .navigationTitle("Configurações")
+            .navigationTitle(L10n.settings)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
-                    Button("Pronto") {
+                    Button(L10n.done) {
                         dismiss()
                     }
                 }
@@ -100,7 +118,7 @@ struct SettingsView: View {
                     guard let url = urls.first else { return }
                     importFrom(url: url)
                 case .failure:
-                    importError = "Não foi possível abrir o arquivo."
+                    importError = L10n.importErrorFile
                 }
             }
         }
@@ -125,7 +143,7 @@ struct SettingsView: View {
         importError = nil
         importSuccess = false
         guard url.startAccessingSecurityScopedResource() else {
-            importError = "Acesso ao arquivo negado."
+            importError = L10n.importErrorAccess
             return
         }
         defer { url.stopAccessingSecurityScopedResource() }
@@ -134,7 +152,7 @@ struct SettingsView: View {
             _ = try ExportImportService.importDecks(from: data, into: modelContext)
             importSuccess = true
         } catch {
-            importError = "Erro ao importar: \(error.localizedDescription)"
+            importError = L10n.importErrorGeneric(error.localizedDescription)
         }
     }
 }

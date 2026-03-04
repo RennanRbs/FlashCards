@@ -23,6 +23,7 @@ struct FlashCardsApp: App {
     var body: some Scene {
         WindowGroup {
             RootView()
+                .environmentObject(AppLanguageManager.shared)
                 .onAppear {
                     HapticsManager.prepare()
                 }

@@ -37,12 +37,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6785BED92F58645200648D89 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				67B319382F4CDEA600EDF47C /* FoundationModels.framework */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		67B3191C2F4CDEA200EDF47C = {
 			isa = PBXGroup;
 			children = (
 				67B319272F4CDEA200EDF47C /* FlashCards */,
 				67B319362F4CDEA500EDF47C /* FlashCards/Assets.xcassets */,
 				67B319262F4CDEA200EDF47C /* Products */,
+				6785BED92F58645200648D89 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -100,6 +109,9 @@
 			knownRegions = (
 				en,
 				Base,
+				"pt-BR",
+				fr,
+				"zh-Hans",
 			);
 			mainGroup = 67B3191C2F4CDEA200EDF47C;
 			minimizedProjectReferenceProxies = 1;

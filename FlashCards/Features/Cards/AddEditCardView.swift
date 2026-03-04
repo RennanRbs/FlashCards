@@ -16,27 +16,28 @@ struct AddEditCardView: View {
     @State private var tagInput = ""
     @State private var tags: [String] = []
     @State private var isImportant = false
+    @State private var difficulty: CardDifficulty = .media
 
     var isEditing: Bool { card != nil }
 
     var body: some View {
         NavigationStack {
             Form {
-                Section("Frente (pergunta)") {
-                    TextField("Pergunta", text: $front, axis: .vertical)
+                Section(L10n.frontQuestion) {
+                    TextField(L10n.questionPlaceholder, text: $front, axis: .vertical)
                         .lineLimit(3...6)
                 }
-                Section("Verso (resposta)") {
-                    TextField("Resposta", text: $back, axis: .vertical)
+                Section(L10n.backAnswer) {
+                    TextField(L10n.answerPlaceholder, text: $back, axis: .vertical)
                         .lineLimit(3...6)
                 }
-                Section("Tags") {
+                Section(L10n.tags) {
                     HStack {
-                        TextField("Nova tag", text: $tagInput)
+                        TextField(L10n.tags, text: $tagInput)
                             .onSubmit {
                                 addTag()
                             }
-                        Button("Adicionar") {
+                        Button(L10n.addTag) {
                             addTag()
                         }
                         .disabled(tagInput.trimmingCharacters(in: .whitespaces).isEmpty)
@@ -49,20 +50,28 @@ struct AddEditCardView: View {
                         }
                     }
                 }
+                Section(L10n.difficulty) {
+                    Picker(L10n.difficulty, selection: $difficulty) {
+                        ForEach(CardDifficulty.allCases, id: \.self) { d in
+                            Text(L10n.difficultyName(d)).tag(d)
+                        }
+                    }
+                    .pickerStyle(.segmented)
+                }
                 Section {
-                    Toggle("Importante", isOn: $isImportant)
+                    Toggle(L10n.important, isOn: $isImportant)
                 }
             }
-            .navigationTitle(isEditing ? "Editar card" : "Novo card")
+            .navigationTitle(isEditing ? L10n.editCard : L10n.newCardTitle)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancelar") {
+                    Button(L10n.cancel) {
                         dismiss()
                     }
                 }
                 ToolbarItem(placement: .confirmationAction) {
-                    Button("Salvar") {
+                    Button(L10n.save) {
                         save()
                     }
                     .disabled(front.trimmingCharacters(in: .whitespaces).isEmpty || back.trimmingCharacters(in: .whitespaces).isEmpty)
@@ -74,6 +83,7 @@ struct AddEditCardView: View {
                     back = card.back
                     tags = card.tags
                     isImportant = card.isImportant
+                    difficulty = card.difficulty
                 }
             }
         }
@@ -95,6 +105,7 @@ struct AddEditCardView: View {
             card.back = b
             card.tags = tags
             card.isImportant = isImportant
+            card.difficulty = difficulty
             card.updatedAt = Date()
         } else {
             let maxIndex = deck.sortedCards.map(\.orderIndex).max() ?? -1
@@ -103,11 +114,12 @@ struct AddEditCardView: View {
                 back: b,
                 tags: tags,
                 isImportant: isImportant,
+                difficulty: difficulty,
                 orderIndex: maxIndex + 1,
                 deck: deck
             )
             modelContext.insert(newCard)
-            DecksJSONService.appendCard(deckId: deck.id, front: f, back: b, tags: tags)
+            DecksJSONService.appendCard(deckId: deck.id, front: f, back: b, tags: tags, difficulty: difficulty)
         }
         try? modelContext.save()
         dismiss()

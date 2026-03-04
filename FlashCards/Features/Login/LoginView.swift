@@ -20,10 +20,10 @@ struct LoginView: View {
                     Image(systemName: "rectangle.stack.fill")
                         .font(.system(size: 60))
                         .foregroundStyle(Color("PrimaryColor"))
-                    Text("Smart Flashcards")
+                    Text(L10n.appName)
                         .font(AppTypography.largeTitle)
                         .multilineTextAlignment(.center)
-                    Text("Estudo inteligente offline")
+                    Text(L10n.appTagline)
                         .font(AppTypography.body)
                         .foregroundStyle(.secondary)
                 }
@@ -47,7 +47,7 @@ struct LoginView: View {
                     .frame(height: 50)
                     .clipShape(RoundedRectangle(cornerRadius: AppSpacing.sm))
 
-                    Button("Continuar sem login") {
+                    Button(L10n.continueWithoutLogin) {
                         DispatchQueue.main.async {
                             authService.signInBypass()
                         }
@@ -55,7 +55,7 @@ struct LoginView: View {
                     .font(AppTypography.body)
                     .foregroundStyle(.secondary)
 
-                    Text("Seus dados ficam só no seu dispositivo.")
+                    Text(L10n.dataStaysOnDevice)
                         .font(AppTypography.footnote)
                         .foregroundStyle(.secondary)
                         .multilineTextAlignment(.center)

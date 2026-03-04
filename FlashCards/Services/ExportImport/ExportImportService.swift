@@ -22,6 +22,8 @@ struct CardExport: Codable {
     let tags: [String]
     let isImportant: Bool
     let orderIndex: Int
+    /// "leve", "media" ou "dificil" (opcional para compatibilidade).
+    let difficulty: String?
 }
 
 enum ExportImportService {
@@ -39,7 +41,8 @@ enum ExportImportService {
                         back: card.back,
                         tags: card.tags,
                         isImportant: card.isImportant,
-                        orderIndex: card.orderIndex
+                        orderIndex: card.orderIndex,
+                        difficulty: difficultyString(card.difficulty)
                     )
                 }
             )
@@ -59,11 +62,13 @@ enum ExportImportService {
             )
             context.insert(deck)
             for (idx, c) in d.cards.enumerated() {
+                let difficulty = parseDifficulty(c.difficulty)
                 let card = Card(
                     front: c.front,
                     back: c.back,
                     tags: c.tags,
                     isImportant: c.isImportant,
+                    difficulty: difficulty,
                     orderIndex: c.orderIndex,
                     deck: deck
                 )
@@ -74,5 +79,22 @@ enum ExportImportService {
         }
         try context.save()
         return count
+    }
+
+    private static func difficultyString(_ d: CardDifficulty) -> String {
+        switch d {
+        case .leve: return "leve"
+        case .media: return "media"
+        case .dificil: return "dificil"
+        }
+    }
+
+    private static func parseDifficulty(_ raw: String?) -> CardDifficulty {
+        guard let raw = raw?.lowercased() else { return .media }
+        switch raw {
+        case "leve": return .leve
+        case "dificil", "difícil": return .dificil
+        default: return .media
+        }
     }
 }

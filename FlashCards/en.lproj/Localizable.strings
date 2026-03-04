@@ -1,0 +1,106 @@
+/* General */
+"decks" = "Decks";
+"deck" = "Deck";
+"cancel" = "Cancel";
+"save" = "Save";
+"create" = "Create";
+"edit" = "Edit";
+"close" = "Close";
+"done" = "Done";
+
+/* Decks list */
+"no_decks_yet" = "No decks yet";
+"tap_plus_to_create_first" = "Tap + to create your first deck.";
+"new_deck" = "New deck";
+"deck_name_placeholder" = "Deck name";
+"cards_count_dominance" = "%d cards • %d%% mastered";
+
+/* Generate cards (AI) */
+"generate_cards_with_ai" = "Generate cards with AI";
+"generate_cards_prompt_placeholder" = "e.g. C#, memory allocation, COBOL, Design Thinking, Android buttons";
+"generate_cards_prompt_footer" = "Enter the topic: any language (C#, COBOL, etc.), specific topics (e.g. memory), design (web, Android, Design Thinking, buttons) or IT management.";
+"cards_quantity" = "Number of cards";
+"generate" = "Generate";
+"ai_unavailable_device" = "Apple Intelligence is not available on this device.";
+"ai_unavailable_not_enabled" = "Enable Apple Intelligence in Settings to generate cards.";
+"ai_unavailable_model_not_ready" = "The model is still being prepared. Try again in a moment.";
+"ai_unavailable_other" = "Apple Intelligence is not available at the moment.";
+"error_try_fewer_cards" = "Try fewer cards or a shorter prompt.";
+"error_could_not_generate" = "Could not generate cards. Try again.";
+
+/* Deck detail */
+"study" = "Study";
+"no_cards_in_deck" = "No cards in this deck";
+"tap_plus_to_add_cards" = "Tap + to add cards.";
+"edit_deck" = "Edit deck";
+
+/* Card add/edit */
+"edit_card" = "Edit card";
+"new_card" = "New card";
+"front_question" = "Front (question)";
+"back_answer" = "Back (answer)";
+"question_placeholder" = "Question";
+"answer_placeholder" = "Answer";
+"tags" = "Tags";
+"add_tag" = "Add";
+"difficulty" = "Difficulty";
+"important" = "Important";
+
+/* Difficulty */
+"difficulty_leve" = "Easy";
+"difficulty_media" = "Medium";
+"difficulty_dificil" = "Hard";
+
+/* Card detail */
+"card" = "Card";
+"front" = "Front";
+"back" = "Back";
+"statistics" = "Statistics";
+"success_rate" = "%d%% correct";
+
+/* Study */
+"listen" = "Listen";
+"no_cards_to_review" = "No cards to review now.";
+"session_complete" = "Session complete";
+"correct_count" = "%d correct";
+"incorrect_count" = "%d incorrect";
+"move_deck_to_end" = "Move deck to end of list";
+"wrong" = "Wrong";
+"hard" = "Hard";
+"correct" = "Correct";
+
+/* Settings */
+"settings" = "Settings";
+"account" = "Account";
+"sign_out" = "Sign out";
+"study_section" = "Study";
+"review_notifications" = "Review notifications";
+"tts" = "Text-to-Speech (TTS)";
+"data" = "Data";
+"export_decks_json" = "Export decks (JSON)";
+"import_decks_json" = "Import decks (JSON)";
+"import_success" = "Import complete.";
+"import_error_file" = "Could not open file.";
+"import_error_access" = "Access to file denied.";
+"import_error_generic" = "Import failed: %@";
+"language" = "Language";
+"language_system" = "System";
+
+/* Login */
+"app_name" = "Smart Flashcards";
+"app_tagline" = "Offline smart study";
+"continue_without_login" = "Continue without signing in";
+"data_stays_on_device" = "Your data stays only on your device.";
+
+/* Statistics */
+"statistics_title" = "Statistics";
+"overview" = "Overview";
+"weekly_progress" = "Weekly progress";
+"by_deck" = "By deck";
+"stat_correct" = "Correct";
+"stat_streak" = "Streak";
+"stat_streak_days" = "days";
+"stat_studied" = "Studied";
+
+/* AI error */
+"ai_error_out_of_scope" = "Could not generate cards. The app supports any programming language, design (web, Android, Design Thinking, etc.) and IT management.";

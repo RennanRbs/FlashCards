@@ -21,11 +21,11 @@ struct CardDetailView: View {
                 ProgressView()
             }
         }
-        .navigationTitle("Card")
+        .navigationTitle(L10n.card)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
-                Button("Editar") {
+                Button(L10n.edit) {
                     showingEdit = true
                 }
             }
@@ -45,26 +45,30 @@ struct CardDetailView: View {
 
     private func cardContent(_ card: Card) -> some View {
         List {
-            Section("Frente") {
+            Section(L10n.front) {
                 Text(card.front)
                     .font(AppTypography.body)
             }
-            Section("Verso") {
+            Section(L10n.back) {
                 Text(card.back)
                     .font(AppTypography.body)
             }
+            Section(L10n.difficulty) {
+                Text(L10n.difficultyName(card.difficulty))
+                    .font(AppTypography.body)
+            }
             if !card.tags.isEmpty {
-                Section("Tags") {
+                Section(L10n.tags) {
                     ForEach(card.tags, id: \.self) { tag in
                         TagChip(tag: tag, onRemove: nil)
                     }
                 }
             }
-            Section("Estatísticas") {
+            Section(L10n.statistics) {
                 if let last = card.lastReviewedAt {
                     Label(last.formatted(date: .abbreviated, time: .shortened), systemImage: "clock")
                 }
-                Label("\(Int(card.successRate * 100))% acertos", systemImage: "chart.bar")
+                Label(L10n.successRateFormatted(Int(card.successRate * 100)), systemImage: "chart.bar")
             }
         }
     }

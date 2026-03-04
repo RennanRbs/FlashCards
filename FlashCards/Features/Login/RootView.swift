@@ -7,6 +7,7 @@ internal import SwiftUI
 
 struct RootView: View {
     @StateObject private var authService = AuthService()
+    @ObservedObject private var languageManager = AppLanguageManager.shared
 
     var body: some View {
         Group {
@@ -16,6 +17,7 @@ struct RootView: View {
                 LoginView(authService: authService)
             }
         }
+        .id(languageManager.currentLanguage)
         .onAppear {
             authService.checkSession()
         }

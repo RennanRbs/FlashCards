@@ -65,19 +65,19 @@ struct StatisticsView: View {
                     .padding()
                 }
             }
-            .navigationTitle("Estatísticas")
+            .navigationTitle(L10n.statisticsTitle)
             .navigationBarTitleDisplayMode(.large)
         }
     }
 
     private var overviewSection: some View {
         VStack(alignment: .leading, spacing: AppSpacing.md) {
-            Text("Visão geral")
+            Text(L10n.overview)
                 .font(AppTypography.headline)
             HStack(spacing: AppSpacing.lg) {
-                statBlock(title: "Acertos", value: "\(Int(successRate * 100))%", color: Color("SuccessColor"))
-                statBlock(title: "Streak", value: "\(streakDays) dias", color: Color("PrimaryColor"))
-                statBlock(title: "Estudados", value: "\(totalStudied)", color: Color("PrimaryColor"))
+                statBlock(title: L10n.statCorrect, value: "\(Int(successRate * 100))%", color: Color("SuccessColor"))
+                statBlock(title: L10n.statStreak, value: "\(streakDays) \(L10n.statStreakDays)", color: Color("PrimaryColor"))
+                statBlock(title: L10n.statStudied, value: "\(totalStudied)", color: Color("PrimaryColor"))
             }
         }
     }
@@ -98,7 +98,7 @@ struct StatisticsView: View {
 
     private var chartSection: some View {
         VStack(alignment: .leading, spacing: AppSpacing.sm) {
-            Text("Evolução semanal")
+            Text(L10n.weeklyProgress)
                 .font(AppTypography.headline)
             Chart(weeklyData) { item in
                 LineMark(
@@ -123,7 +123,7 @@ struct StatisticsView: View {
 
     private var performanceByDeckSection: some View {
         VStack(alignment: .leading, spacing: AppSpacing.sm) {
-            Text("Por deck")
+            Text(L10n.byDeck)
                 .font(AppTypography.headline)
             ForEach(decks, id: \.id) { deck in
                 HStack {

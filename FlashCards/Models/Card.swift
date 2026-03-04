@@ -6,6 +6,21 @@
 import Foundation
 import SwiftData
 
+/// Dificuldade do card para estudo (leve, média, difícil).
+enum CardDifficulty: Int, CaseIterable, Codable {
+    case leve = 0
+    case media = 1
+    case dificil = 2
+
+    var displayName: String {
+        switch self {
+        case .leve: return "Leve"
+        case .media: return "Média"
+        case .dificil: return "Difícil"
+        }
+    }
+}
+
 @Model
 final class Card {
     var id: UUID
@@ -15,6 +30,8 @@ final class Card {
     var imageData: Data?
     var audioURL: String?
     var isImportant: Bool
+    /// 0 = leve, 1 = média, 2 = difícil (default 1 para compatibilidade com dados antigos).
+    var difficultyRawValue: Int = 1
     var orderIndex: Int
     var createdAt: Date
     var updatedAt: Date
@@ -30,6 +47,11 @@ final class Card {
 
     var deck: Deck?
 
+    var difficulty: CardDifficulty {
+        get { CardDifficulty(rawValue: difficultyRawValue) ?? .media }
+        set { difficultyRawValue = newValue.rawValue }
+    }
+
     init(
         id: UUID = UUID(),
         front: String,
@@ -38,6 +60,7 @@ final class Card {
         imageData: Data? = nil,
         audioURL: String? = nil,
         isImportant: Bool = false,
+        difficulty: CardDifficulty = .media,
         orderIndex: Int = 0,
         createdAt: Date = Date(),
         updatedAt: Date = Date(),
@@ -57,6 +80,7 @@ final class Card {
         self.imageData = imageData
         self.audioURL = audioURL
         self.isImportant = isImportant
+        self.difficultyRawValue = difficulty.rawValue
         self.orderIndex = orderIndex
         self.createdAt = createdAt
         self.updatedAt = updatedAt

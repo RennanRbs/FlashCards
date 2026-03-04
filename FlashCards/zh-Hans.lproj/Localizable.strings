@@ -1,0 +1,106 @@
+/* General */
+"decks" = "牌组";
+"deck" = "牌组";
+"cancel" = "取消";
+"save" = "保存";
+"create" = "创建";
+"edit" = "编辑";
+"close" = "关闭";
+"done" = "完成";
+
+/* Decks list */
+"no_decks_yet" = "暂无牌组";
+"tap_plus_to_create_first" = "点击 + 创建您的第一个牌组。";
+"new_deck" = "新建牌组";
+"deck_name_placeholder" = "牌组名称";
+"cards_count_dominance" = "%d 张卡片 · %d%% 已掌握";
+
+/* Generate cards (AI) */
+"generate_cards_with_ai" = "用 AI 生成卡片";
+"generate_cards_prompt_placeholder" = "例如：C#、内存分配、COBOL、设计思维、Android 按钮";
+"generate_cards_prompt_footer" = "输入主题：任意编程语言（C#、COBOL 等）、具体主题（如内存）、设计（网页、Android、设计思维、按钮）或 IT 管理。";
+"cards_quantity" = "卡片数量";
+"generate" = "生成";
+"ai_unavailable_device" = "此设备不支持 Apple Intelligence。";
+"ai_unavailable_not_enabled" = "请在“设置”中启用 Apple Intelligence 以生成卡片。";
+"ai_unavailable_model_not_ready" = "模型正在准备中，请稍后再试。";
+"ai_unavailable_other" = "Apple Intelligence 暂时不可用。";
+"error_try_fewer_cards" = "请尝试减少卡片数量或缩短提示。";
+"error_could_not_generate" = "无法生成卡片，请重试。";
+
+/* Deck detail */
+"study" = "学习";
+"no_cards_in_deck" = "此牌组暂无卡片";
+"tap_plus_to_add_cards" = "点击 + 添加卡片。";
+"edit_deck" = "编辑牌组";
+
+/* Card add/edit */
+"edit_card" = "编辑卡片";
+"new_card" = "新建卡片";
+"front_question" = "正面（问题）";
+"back_answer" = "背面（答案）";
+"question_placeholder" = "问题";
+"answer_placeholder" = "答案";
+"tags" = "标签";
+"add_tag" = "添加";
+"difficulty" = "难度";
+"important" = "重要";
+
+/* Difficulty */
+"difficulty_leve" = "简单";
+"difficulty_media" = "中等";
+"difficulty_dificil" = "困难";
+
+/* Card detail */
+"card" = "卡片";
+"front" = "正面";
+"back" = "背面";
+"statistics" = "统计";
+"success_rate" = "%d%% 正确";
+
+/* Study */
+"listen" = "朗读";
+"no_cards_to_review" = "当前没有可复习的卡片。";
+"session_complete" = "会话结束";
+"correct_count" = "%d 正确";
+"incorrect_count" = "%d 错误";
+"move_deck_to_end" = "将牌组移到最后";
+"wrong" = "错误";
+"hard" = "困难";
+"correct" = "正确";
+
+/* Settings */
+"settings" = "设置";
+"account" = "账户";
+"sign_out" = "退出登录";
+"study_section" = "学习";
+"review_notifications" = "复习提醒";
+"tts" = "语音朗读 (TTS)";
+"data" = "数据";
+"export_decks_json" = "导出牌组 (JSON)";
+"import_decks_json" = "导入牌组 (JSON)";
+"import_success" = "导入完成。";
+"import_error_file" = "无法打开文件。";
+"import_error_access" = "无法访问文件。";
+"import_error_generic" = "导入失败：%@";
+"language" = "语言";
+"language_system" = "系统";
+
+/* Login */
+"app_name" = "Smart Flashcards";
+"app_tagline" = "离线智能学习";
+"continue_without_login" = "不登录继续";
+"data_stays_on_device" = "您的数据仅保存在您的设备上。";
+
+/* Statistics */
+"statistics_title" = "统计";
+"overview" = "概览";
+"weekly_progress" = "每周进度";
+"by_deck" = "按牌组";
+"stat_correct" = "正确";
+"stat_streak" = "连续";
+"stat_streak_days" = "天";
+"stat_studied" = "已学";
+
+/* AI error */
+"ai_error_out_of_scope" = "无法生成卡片。本应用支持任意编程语言、设计（网页、Android、设计思维等）及 IT 管理。";

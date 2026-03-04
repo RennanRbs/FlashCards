@@ -34,7 +34,7 @@ struct DecksListView: View {
                     deckList
                 }
             }
-            .navigationTitle("Decks")
+            .navigationTitle(L10n.decks)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
@@ -95,9 +95,9 @@ struct DecksListView: View {
             Image(systemName: "rectangle.stack")
                 .font(.system(size: 48))
                 .foregroundStyle(.secondary)
-            Text("Nenhum deck ainda")
+            Text(L10n.noDecksYet)
                 .font(AppTypography.title2)
-            Text("Toque em + para criar seu primeiro deck.")
+            Text(L10n.tapPlusToCreateFirst)
                 .font(AppTypography.body)
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)
@@ -128,18 +128,18 @@ struct DecksListView: View {
     private var addDeckSheet: some View {
         NavigationStack {
             Form {
-                TextField("Nome do deck", text: $newDeckName)
+                TextField(L10n.deckNamePlaceholder, text: $newDeckName)
             }
-            .navigationTitle("Novo deck")
+            .navigationTitle(L10n.newDeck)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancelar") {
+                    Button(L10n.cancel) {
                         showingAddDeck = false
                     }
                 }
                 ToolbarItem(placement: .confirmationAction) {
-                    Button("Criar") {
+                    Button(L10n.create) {
                         let name = newDeckName.trimmingCharacters(in: .whitespacesAndNewlines)
                         if !name.isEmpty {
                             viewModel.addDeck(name: name)
@@ -157,14 +157,14 @@ struct DecksListView: View {
         return NavigationStack {
             Form {
                 Section {
-                    TextField("Ex.: pokemon, direito civil brasileiro, dinossauros", text: $generateCardsPrompt, axis: .vertical)
+                    TextField(L10n.generateCardsPromptPlaceholder, text: $generateCardsPrompt, axis: .vertical)
                         .lineLimit(2...4)
                 } footer: {
-                    Text("Digite o tema para criar cards. A IA criará um deck com perguntas e respostas sobre o assunto.")
+                    Text(L10n.generateCardsPromptFooter)
                 }
 
-                Section("Quantidade de cards") {
-                    Picker("Quantidade", selection: $generateCardsCount) {
+                Section(L10n.cardsQuantity) {
+                    Picker(L10n.cardsQuantity, selection: $generateCardsCount) {
                         Text("5").tag(5)
                         Text("10").tag(10)
                         Text("15").tag(15)
@@ -189,11 +189,11 @@ struct DecksListView: View {
                     }
                 }
             }
-            .navigationTitle("Gerar cards com IA")
+            .navigationTitle(L10n.generateCardsWithAI)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancelar") {
+                    Button(L10n.cancel) {
                         showingGenerateCards = false
                     }
                     .disabled(isGeneratingCards)
@@ -203,7 +203,7 @@ struct DecksListView: View {
                         ProgressView()
                             .scaleEffect(0.8)
                     } else {
-                        Button("Gerar") {
+                        Button(L10n.generate) {
                             runGenerateCards(availability: availability)
                         }
                         .disabled(generateCardsPrompt.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || !availability.canGenerate)
@@ -219,13 +219,13 @@ struct DecksListView: View {
         case .available:
             return ""
         case .unavailableDeviceNotEligible:
-            return "Apple Intelligence não está disponível neste dispositivo."
+            return L10n.aiUnavailableDevice
         case .unavailableAppleIntelligenceNotEnabled:
-            return "Ative o Apple Intelligence em Ajustes para gerar cards."
+            return L10n.aiUnavailableNotEnabled
         case .unavailableModelNotReady:
-            return "O modelo ainda está sendo preparado. Tente novamente em instantes."
+            return L10n.aiUnavailableModelNotReady
         case .unavailableOther:
-            return "Apple Intelligence não está disponível no momento."
+            return L10n.aiUnavailableOther
         }
     }
 
@@ -253,36 +253,44 @@ struct DecksListView: View {
         }
     }
 
-    private func addGeneratedDeckWithCards(prompt: String, pairs: [(front: String, back: String)]) {
+    private func addGeneratedDeckWithCards(prompt: String, pairs: [(front: String, back: String, difficulty: CardDifficulty)]) {
         let name = AICardsGenerationService.deckName(fromUserPrompt: prompt)
-        let maxIndex = (try? modelContext.fetch(FetchDescriptor<Deck>(sortBy: [SortDescriptor(\.orderIndex)])))?.last?.orderIndex ?? -1
-        let deck = Deck(name: name, orderIndex: maxIndex + 1)
+        let descriptor = FetchDescriptor<Deck>(sortBy: [SortDescriptor(\.orderIndex)])
+        let existing = (try? modelContext.fetch(descriptor)) ?? []
+        let deck = Deck(name: name, orderIndex: 0)
         modelContext.insert(deck)
-        DecksJSONService.appendDeck(id: deck.id, name: deck.name, orderIndex: deck.orderIndex)
+        for d in existing {
+            d.orderIndex += 1
+        }
+        DecksJSONService.appendDeck(id: deck.id, name: deck.name, orderIndex: 0)
         for (index, pair) in pairs.enumerated() {
             let card = Card(
                 front: pair.front,
                 back: pair.back,
                 tags: ["IA"],
+                difficulty: pair.difficulty,
                 orderIndex: index,
                 deck: deck
             )
             modelContext.insert(card)
-            DecksJSONService.appendCard(deckId: deck.id, front: pair.front, back: pair.back, tags: ["IA"])
+            DecksJSONService.appendCard(deckId: deck.id, front: pair.front, back: pair.back, tags: ["IA"], difficulty: pair.difficulty)
         }
         try? modelContext.save()
         viewModel.fetchDecks()
     }
 
     private func errorMessage(for error: Error) -> String {
+        if let aiError = error as? AICardsGenerationError {
+            return aiError.localizedDescription
+        }
         let nsError = error as NSError
         if nsError.domain == "FoundationModels.LanguageModelSession.GenerationError" ||
             String(describing: type(of: error)).contains("GenerationError") {
             if nsError.localizedDescription.lowercased().contains("context") {
-                return "Tente um número menor de cards ou um prompt mais curto."
+                return L10n.errorTryFewerCards
             }
         }
-        return "Não foi possível gerar os cards. Tente novamente."
+        return L10n.errorCouldNotGenerate
     }
 }
 
@@ -294,7 +302,7 @@ struct DeckRowView: View {
             VStack(alignment: .leading, spacing: AppSpacing.sm) {
                 Text(deck.name)
                     .font(AppTypography.title2)
-                Text("\(deck.cards.count) cards • \(Int(deck.dominancePercentage * 100))% dominado")
+                Text(L10n.cardsCountDominanceFormatted(cards: deck.cards.count, percent: Int(deck.dominancePercentage * 100)))
                     .font(AppTypography.subheadline)
                     .foregroundStyle(.secondary)
                 ProgressBar(progress: deck.dominancePercentage)

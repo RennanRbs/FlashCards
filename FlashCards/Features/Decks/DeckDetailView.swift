@@ -24,7 +24,7 @@ struct DeckDetailView: View {
                 ProgressView()
             }
         }
-        .navigationTitle(deck?.name ?? "Deck")
+        .navigationTitle(deck?.name ?? L10n.deck)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
@@ -35,7 +35,7 @@ struct DeckDetailView: View {
                 }
             }
             ToolbarItem(placement: .topBarTrailing) {
-                Button("Editar") {
+                Button(L10n.edit) {
                     editDeckName = deck?.name ?? ""
                     showingEditDeck = true
                 }
@@ -76,7 +76,7 @@ struct DeckDetailView: View {
             }
         }
         .safeAreaInset(edge: .bottom) {
-            PrimaryButton("Estudar", style: .primary) {
+            PrimaryButton(L10n.study, style: .primary) {
                 HapticsManager.medium()
                 showingStudy = true
             }
@@ -92,9 +92,9 @@ struct DeckDetailView: View {
             Image(systemName: "rectangle.on.rectangle.angled")
                 .font(.system(size: 48))
                 .foregroundStyle(.secondary)
-            Text("Nenhum card neste deck")
+            Text(L10n.noCardsInDeck)
                 .font(AppTypography.title2)
-            Text("Toque em + para adicionar cards.")
+            Text(L10n.tapPlusToAddCards)
                 .font(AppTypography.body)
                 .foregroundStyle(.secondary)
             Spacer()
@@ -124,18 +124,18 @@ struct DeckDetailView: View {
     private func editDeckSheet(_ deck: Deck) -> some View {
         NavigationStack {
             Form {
-                TextField("Nome do deck", text: $editDeckName)
+                TextField(L10n.deckNamePlaceholder, text: $editDeckName)
             }
-            .navigationTitle("Editar deck")
+            .navigationTitle(L10n.editDeck)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancelar") {
+                    Button(L10n.cancel) {
                         showingEditDeck = false
                     }
                 }
                 ToolbarItem(placement: .confirmationAction) {
-                    Button("Salvar") {
+                    Button(L10n.save) {
                         let name = editDeckName.trimmingCharacters(in: .whitespacesAndNewlines)
                         if !name.isEmpty {
                             deck.name = name
@@ -185,8 +185,11 @@ struct CardRowView: View {
                 Text(card.front)
                     .font(AppTypography.bodyMedium)
                     .lineLimit(2)
-                if !card.tags.isEmpty {
-                    HStack(spacing: AppSpacing.xxs) {
+                HStack(spacing: AppSpacing.xxs) {
+                    Text(L10n.difficultyName(card.difficulty))
+                        .font(AppTypography.caption)
+                        .foregroundStyle(.secondary)
+                    if !card.tags.isEmpty {
                         ForEach(card.tags, id: \.self) { tag in
                             TagChip(tag: tag, onRemove: nil)
                         }
